@@ -12,7 +12,7 @@ const Sidebar = ({ onLogout, isOpen, setIsOpen, activePage, setActivePage }) => 
 
   return (
     <>
-      {/* Sidebar */}
+      
       <aside
         className={`fixed md:static top-0 left-0 h-full md:h-auto bg-white/90 backdrop-blur-lg shadow-2xl flex flex-col rounded-r-3xl overflow-hidden transform transition-all duration-500 ease-in-out z-50
           ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}

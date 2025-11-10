@@ -62,7 +62,7 @@ let navigate = useNavigate()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-      {/* Navigation */}
+
       <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -73,7 +73,7 @@ let navigate = useNavigate()
               </span>
             </div>
             
-            {/* Desktop Menu */}
+          
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-700 hover:text-blue-600 transition">Features</a>
               <a href="#specialties" className="text-gray-700 hover:text-blue-600 transition">Specialties</a>
@@ -84,7 +84,7 @@ let navigate = useNavigate()
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
+          
             <button 
               className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -93,7 +93,7 @@ let navigate = useNavigate()
             </button>
           </div>
 
-          {/* Mobile Menu */}
+         
           {mobileMenuOpen && (
             <div className="md:hidden py-4 space-y-3">
               <a href="#features" className="block text-gray-700 hover:text-blue-600 transition">Features</a>
@@ -107,7 +107,7 @@ let navigate = useNavigate()
         </div>
       </nav>
 
-      {/* Hero Section */}
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -154,7 +154,7 @@ let navigate = useNavigate()
         </div>
       </section>
 
-      {/* Stats Section */}
+   
       <section className="bg-gradient-to-r from-blue-600 to-cyan-600 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -168,7 +168,7 @@ let navigate = useNavigate()
         </div>
       </section>
 
-      {/* Features Section */}
+    
       <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
@@ -192,7 +192,7 @@ let navigate = useNavigate()
         </div>
       </section>
 
-      {/* Specialties Section */}
+    
       <section id="specialties" className="bg-gradient-to-br from-gray-50 to-blue-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -215,7 +215,7 @@ let navigate = useNavigate()
         </div>
       </section>
 
-      {/* CTA Section */}
+      
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-center shadow-2xl">
           <h2 className="text-4xl font-bold text-white mb-6">
@@ -231,7 +231,7 @@ let navigate = useNavigate()
         </div>
       </section>
 
-      {/* Footer */}
+    
       <footer className="bg-gray-900 text-gray-300 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">

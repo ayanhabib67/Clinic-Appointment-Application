@@ -13,10 +13,10 @@ export default function AuthRoute() {
 
   if (loading) return <div>Loading...</div>;
 
-  // Redirect to appropriate dashboard if already logged in
+  
   if (userRole === "admin") return <Navigate to="/adminDashboard" replace />;
   if (userRole === "staff") return <Navigate to="/StaffDashboard" replace />;
   if (userRole === "patient") return <Navigate to="/PatientDashboard" replace />;
 
-  return <Outlet />; // Not logged in, allow login/signup
+
 }

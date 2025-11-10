@@ -47,9 +47,9 @@ const Dashboard = () => {
   const handleDeleteDoctor = async (id) => {
     try {
       await axios.delete("http://localhost:5000/api/deleteDoctor", {
-        data: { doctorId: id }  // ✅ Pass the id in the body
+        data: { doctorId: id }  
       });
-      // Remove deleted doctor from state
+      
       setDoctors(doctors.filter(d => d.doctorId !== id));
       alert("Doctor deleted successfully!");
     } catch (error) {
@@ -89,11 +89,11 @@ const Dashboard = () => {
           </h2>
         </div>
 
-        {/* ✅ Dashboard */}
+        
         {activePage === "Dashboard" && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              {/* Inline SummaryCards */}
+             
               <div className="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-green-500 text-center hover:scale-[1.02] transform transition-all duration-300 cursor-pointer hover:ring-4 ring-green-200">
                 <div className="text-4xl mb-3 text-green-600">🧑‍💼</div>
                 <h3 className="text-sm font-semibold uppercase text-gray-500 tracking-wider">Total Admins</h3>
@@ -119,7 +119,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Top Doctors + Recent Patients */}
+          
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-white p-6 rounded-3xl shadow-2xl border border-gray-100">
                 <h4 className="text-xl font-bold text-indigo-700 mb-6 flex items-center">
@@ -174,7 +174,7 @@ const Dashboard = () => {
           </>
         )}
 
-        {/* ✅ Doctors */}
+       
         {activePage === "Doctors" && (
           <div className="bg-white rounded-3xl shadow-2xl p-6 mb-8 overflow-x-auto border border-gray-100">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
@@ -213,7 +213,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* ✅ Staff */}
+        
         {activePage === "Staff" && (
           <div className="bg-white rounded-3xl shadow-2xl p-6 mb-8 overflow-x-auto border border-gray-100">
             <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
@@ -272,7 +272,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* ✅ Appointments */}
+    
         {activePage === "Appointments" && (
           <div className="bg-white rounded-3xl shadow-2xl p-10 text-center text-gray-500 border-2 border-dashed border-gray-200">
             <h3 className="text-2xl font-bold text-gray-700 mb-4 flex items-center justify-center">

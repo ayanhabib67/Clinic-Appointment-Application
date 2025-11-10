@@ -66,7 +66,7 @@ const AllDoctorsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+      
       <div className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <h1 className="text-3xl font-bold text-gray-900">Our Doctors</h1>
@@ -77,10 +77,10 @@ const AllDoctorsPage = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Search & Filter */}
+        
         <div className="bg-white rounded-lg shadow p-6 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
-            {/* Search */}
+           
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -92,7 +92,7 @@ const AllDoctorsPage = () => {
               />
             </div>
 
-            {/* Specialty Filter */}
+         
             <div className="relative">
               <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <select
@@ -107,7 +107,7 @@ const AllDoctorsPage = () => {
             </div>
           </div>
 
-          {/* Count */}
+         
           <div className="mt-4 pt-4 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Showing <span className="font-semibold text-gray-900">{filteredDoctors.length}</span> doctors
@@ -118,7 +118,7 @@ const AllDoctorsPage = () => {
           </div>
         </div>
 
-        {/* Doctor Cards */}
+      
         {loading ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-blue-500"></div>
@@ -134,7 +134,7 @@ const AllDoctorsPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredDoctors.map((doctor) => (
               <div key={doctor._id} className="bg-white rounded-lg shadow hover:shadow-xl transition-shadow overflow-hidden">
-                {/* Header */}
+            
                 <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-blue-600 font-bold text-xl">
@@ -150,7 +150,7 @@ const AllDoctorsPage = () => {
                   </div>
                 </div>
 
-                {/* Details */}
+                
                 <div className="p-6 space-y-4">
                   <div className="flex items-start gap-3">
                     <Award className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
@@ -185,14 +185,8 @@ const AllDoctorsPage = () => {
                   </div>
                 </div>
 
-                {/* Buttons */}
                 <div className="px-6 pb-6 space-y-2">
-                  {/* <button
-                    onClick={() => navigate('/AppointmentPage')}
-                    className="w-full px-4 py-2.5 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
-                  >
-                    Book Appointment
-                  </button> */}
+                 
 
 
 <button

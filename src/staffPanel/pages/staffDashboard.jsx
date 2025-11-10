@@ -15,7 +15,6 @@ const StaffDashboard = () => {
   const [doctors, setDoctors] = useState([]);
   const [docterLength, setDocterLength] = useState(0);
 
-  // New doctor states
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +29,7 @@ const StaffDashboard = () => {
   const [qualification, setQualification] = useState("");
   const [doctorId, setDoctorId] = useState("");
 
-  // Stats
+  
   const stats = [
     {
       label: "Today's Appointments",
@@ -158,7 +157,7 @@ const StaffDashboard = () => {
       );
       console.log("Doctor added successfully:", response.data);
 
-      // Clear form
+     
       setName("");
       setEmail("");
       setPassword("");
@@ -173,7 +172,6 @@ const StaffDashboard = () => {
       setQualification("");
       setDoctorId("");
 
-      // Refresh doctor list
       getDoctors();
     } catch (error) {
       console.error("Error adding doctor:", error);
@@ -182,7 +180,7 @@ const StaffDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+     
       <div className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div>
@@ -207,9 +205,9 @@ const StaffDashboard = () => {
         </div>
       </div>
 
-      {/* Main Content */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Stats */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {stats.map((stat, index) => (
             <div key={index} className="bg-white rounded-lg shadow p-6">
@@ -226,7 +224,7 @@ const StaffDashboard = () => {
           ))}
         </div>
 
-        {/* Tabs */}
+       
         <div className="bg-white rounded-lg shadow mb-6">
           <div className="border-b border-gray-200">
             <nav className="flex">
@@ -253,7 +251,7 @@ const StaffDashboard = () => {
           </div>
 
           <div className="p-6">
-            {/* Appointments Tab */}
+          
             {activeTab === "overview" && (
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -334,7 +332,7 @@ const StaffDashboard = () => {
               </div>
             )}
 
-            {/* Doctor Schedules */}
+          
             {activeTab === "doctors" && (
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -390,14 +388,14 @@ const StaffDashboard = () => {
               </div>
             )}
 
-            {/* Add Doctor Form */}
+       
             {activeTab === "addDoctor" && (
               <div>
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
                   Add New Doctor
                 </h2>
                 <form className="max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Name */}
+                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Full Name *
@@ -412,7 +410,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Email */}
+                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address *
@@ -427,7 +425,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Password */}
+                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Password *
@@ -443,7 +441,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* About */}
+               
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       About *
@@ -458,7 +456,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Specialty */}
+                
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Specialty *
@@ -482,7 +480,7 @@ const StaffDashboard = () => {
                     </select>
                   </div>
 
-                  {/* Room Number */}
+                
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Room Number *
@@ -497,7 +495,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Joining Date */}
+                 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Joining Date *
@@ -512,7 +510,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Timeslots */}
+                 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Timeslots *
@@ -526,7 +524,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Availability */}
+                 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Availability *
@@ -540,7 +538,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Appointments */}
+                 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Appointments *
@@ -554,7 +552,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Experience */}
+                
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Experience *
@@ -568,7 +566,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Qualification */}
+                
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Qualification *
@@ -582,7 +580,7 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Doctor ID */}
+               
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Doctor ID *
@@ -596,14 +594,14 @@ const StaffDashboard = () => {
                     />
                   </div>
 
-                  {/* Buttons */}
+                
                   <div className="md:col-span-2 flex gap-3 mt-4">
                     <button
                       type="submit"
                       onClick={addDoctor}
                       className="px-6 py-2.5 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
                     >
-                      ✅ Add Doctor
+                      Add Doctor
                     </button>
                     <button
                       type="button"

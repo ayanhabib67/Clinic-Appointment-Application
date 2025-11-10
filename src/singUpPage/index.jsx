@@ -73,7 +73,7 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center">
-        {/* Left info panel */}
+     
         <div className="hidden md:block space-y-6">
           <div className="flex items-center space-x-3">
             <Building2 className="w-12 h-12 text-blue-600" />
@@ -102,7 +102,7 @@ export default function SignUpPage() {
           </div>
         </div>
 
-        {/* Signup panel */}
+      
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
@@ -110,7 +110,7 @@ export default function SignUpPage() {
           </div>
 
           <div className="space-y-6">
-            {/* Name */}
+            
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
               <div className="relative">
@@ -128,7 +128,7 @@ export default function SignUpPage() {
               {errors.name && <p className="mt-2 text-sm text-red-600">{errors.name}</p>}
             </div>
 
-            {/* Email */}
+      
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
               <div className="relative">
@@ -146,7 +146,7 @@ export default function SignUpPage() {
               {errors.email && <p className="mt-2 text-sm text-red-600">{errors.email}</p>}
             </div>
 
-            {/* Password */}
+           
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
               <div className="relative">
@@ -168,7 +168,7 @@ export default function SignUpPage() {
               <p className="mt-2 text-xs text-gray-500">Must be at least 6 characters long</p>
             </div>
 
-            {/* Submit Button */}
+        
             <button
               type="button"
               onClick={handleSubmit}

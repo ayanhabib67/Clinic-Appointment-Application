@@ -15,38 +15,7 @@ import AppointmentPage from "./userPanel/appoiment";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Routes>
-      <Route element={<AuthRoute />}> 
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
-
-
-      </Route>
-      
-        <Route index element={<ClinicLandingPage />} />
-<Route path="/AllDoctorsPage" element={<AllDoctorsPage/>} />      
-      
-      <Route element={<PrivateRoute />}>
-<Route path="/adminDashboard" element={<Dashboard/>} />     
-<Route path="/StaffDashboard" element={<StaffDashboard/>} /> 
-<Route path="/PatientDashboard" element={<PatientDashboard/>} />   
-<Route path="/AppointmentPage" element={<AppointmentPage/>} />   
-<Route path="/AppointmentPage/:id" element={<AppointmentPage />} />
-
-
-
-
-
-
-      
-      
-      </Route>
-
-
-       
-      </Routes> */}
-
-
+  
 <Routes>
   <Route element={<AuthRoute />}>
     <Route path="/login" element={<LoginPage />} />

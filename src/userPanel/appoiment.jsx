@@ -35,7 +35,7 @@ function minutesToTime(totalMinutes) {
 }
 
 function splitTimeSlot(slot, parts) {
-  if (!parts) parts = 5; // default 5 parts
+  if (!parts) parts = 5; 
 
   var times = slot.split("to");
   var start = times[0].trim();
@@ -49,7 +49,7 @@ function splitTimeSlot(slot, parts) {
   var endH = parseInt(endParts[0]);
   var endM = parseInt(endParts[1]);
 
-  if (endH < startH) endH += 12; // handle if time crosses noon
+  if (endH < startH) endH += 12; 
 
   var startMinutes = startH * 60 + startM;
   var endMinutes = endH * 60 + endM;
@@ -177,7 +177,7 @@ export default function AppointmentPage() {
       }
     }
   
-    // Get logged-in user ID from localStorage (no JSON.parse needed)
+    
     const userId = localStorage.getItem("userId");
   
     if (!userId) {
@@ -187,7 +187,7 @@ export default function AppointmentPage() {
   
     try {
       const response = await axios.post("http://localhost:5000/api/CreateAppointment", {
-        userId, // include userId here
+        userId, 
         doctorId: singleDoctor._id,
         doctorName: singleDoctor.name,
         doctorEmail: singleDoctor.email,
@@ -255,7 +255,7 @@ export default function AppointmentPage() {
           </p>
         </div>
 
-        {/* Doctor Info */}
+       
         {singleDoctor ? (
           <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8">
             <div className="flex items-center mb-4">
@@ -297,7 +297,7 @@ export default function AppointmentPage() {
           </p>
         )}
 
-        {/* Appointment Form */}
+   
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -305,7 +305,7 @@ export default function AppointmentPage() {
           }}
           className="bg-white rounded-2xl shadow-xl p-6 md:p-8 space-y-8"
         >
-          {/* Personal Info */}
+        
           <Section
             title="Personal Information"
             icon={<User className="w-7 h-7 text-blue-500 mr-3" />}
@@ -363,7 +363,7 @@ export default function AppointmentPage() {
             />
           </Section>
 
-          {/* Medical Info */}
+         
           <Section
             title="Medical Information"
             icon={<Activity className="w-7 h-7 text-red-500 mr-3" />}
@@ -410,7 +410,7 @@ export default function AppointmentPage() {
             />
           </Section>
 
-          {/* Appointment Details */}
+       
           <Section
             title="Appointment Details"
             icon={<Calendar className="w-7 h-7 text-green-500 mr-3" />}
@@ -440,7 +440,7 @@ export default function AppointmentPage() {
               placeholder="Doctor Name"
             />
 
-            {/* Date Field */}
+           
             <div className="flex flex-col">
               <input
                 type="date"
@@ -468,7 +468,7 @@ export default function AppointmentPage() {
               )}
             </div>
 
-            {/* Time Slots */}
+     
             <div className="md:col-span-2 flex flex-wrap gap-2">
               {timeSlots.map((slot) => (
                 <button
@@ -494,7 +494,7 @@ export default function AppointmentPage() {
             </div>
           </Section>
 
-          {/* Additional Notes */}
+          
           <Section
             title="Additional Notes"
             icon={<FileText className="w-7 h-7 text-purple-500 mr-3" />}

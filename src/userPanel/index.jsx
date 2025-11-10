@@ -59,7 +59,7 @@ const PatientDashboard = () => {
  
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+      
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
@@ -90,7 +90,7 @@ const PatientDashboard = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
+        
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 mb-8 text-white">
           <div className="flex justify-between items-start">
             <div>
@@ -106,7 +106,6 @@ const PatientDashboard = () => {
           </div>
         </div>
 
-        {/* Navigation Tabs */}
         <div className="bg-white rounded-lg shadow mb-6">
           <div className="border-b">
             <nav className="flex space-x-8 px-6">
@@ -153,7 +152,7 @@ const PatientDashboard = () => {
           </div>
         </div>
 
-        {/* Overview Tab */}
+       
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg shadow p-6">
@@ -194,7 +193,7 @@ const PatientDashboard = () => {
               </div>
             </div>
 
-            {/* Upcoming Appointments List */}
+          
             <div className="lg:col-span-2 bg-white rounded-lg shadow">
               <div className="p-6 border-b">
                 <h3 className="text-lg font-bold text-gray-900">Upcoming Appointments</h3>
@@ -235,7 +234,7 @@ const PatientDashboard = () => {
           </div>
         )}
 
-        {/* Appointments Tab */}
+       
         {activeTab === 'appointments' && (
           <div className="bg-white rounded-lg shadow">
             <div className="p-6 border-b flex justify-between items-center">
@@ -285,7 +284,7 @@ const PatientDashboard = () => {
           </div>
         )}
 
-        {/* Medical History Tab */}
+    
         {activeTab === 'history' && (
           <div className="bg-white rounded-lg shadow">
             <div className="p-6 border-b">
@@ -330,7 +329,7 @@ const PatientDashboard = () => {
         )}
       </div>
 
-      {/* Book Appointment Modal */}
+ 
       {showBookingModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -345,7 +344,7 @@ const PatientDashboard = () => {
             </div>
 
             <div className="p-6 space-y-6">
-              {/* Step 1: Select Specialty */}
+           
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Select Specialty</label>
                 <select
@@ -360,7 +359,7 @@ const PatientDashboard = () => {
                 </select>
               </div>
 
-              {/* Step 2: Select Doctor */}
+             
               {selectedSpecialty && (
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Select Doctor</label>
@@ -377,7 +376,7 @@ const PatientDashboard = () => {
                 </div>
               )}
 
-              {/* Step 3: Pick Date */}
+            
               {selectedDoctor && (
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Select Date</label>
@@ -390,7 +389,7 @@ const PatientDashboard = () => {
                 </div>
               )}
 
-              {/* Step 4: Select Time */}
+      
               {selectedDate && selectedDoctor && (
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Select Time</label>

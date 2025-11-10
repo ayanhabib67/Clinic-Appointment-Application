@@ -13,7 +13,7 @@ export default function PrivateRoute({ allowedRoles }) {
 
   if (loading) return <div>Loading...</div>;
 
-  if (!userRole) return <Navigate to="/login" replace />; // Not logged in
+  if (!userRole) return <Navigate to="/login" replace />;
 
   if (allowedRoles && !allowedRoles.includes(userRole)) {
   
