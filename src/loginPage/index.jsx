@@ -58,7 +58,7 @@ let [password , setPassword] = useState("")
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-50 p-4">
           <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg grid md:grid-cols-2 overflow-hidden">
     
-           
+            {/* Left side with image */}
             <div className="bg-blue-600 text-white flex flex-col justify-center items-center p-8">
               <img
                 src="https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg"
@@ -71,7 +71,7 @@ let [password , setPassword] = useState("")
               </p>
             </div>
     
-         
+            {/* Right side with form */}
             <div className="p-10 flex flex-col justify-center">
               <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Login</h2>
     

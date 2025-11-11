@@ -4,6 +4,7 @@ import {
   Activity, Stethoscope, CalendarCheck, X 
 } from 'lucide-react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PatientDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -56,6 +57,22 @@ const PatientDashboard = () => {
     getPatientAppointments();
   }, []);
 
+
+  let navigate = useNavigate()
+
+
+
+  let logOutPatient = ()=>{
+
+
+localStorage.removeItem("role")
+localStorage.removeItem("token")
+localStorage.removeItem("userId")
+navigate("/")
+
+
+
+  }
  
   return (
     <div className="min-h-screen bg-gray-50">
@@ -73,14 +90,9 @@ const PatientDashboard = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </button>
-              <button className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                <Settings className="w-5 h-5" />
-              </button>
-              <button className="flex items-center space-x-2 p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+             
+           
+              <button  onClick={logOutPatient}  className="flex items-center space-x-2 p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                 <LogOut className="w-5 h-5" />
                 <span className="text-sm font-medium">Logout</span>
               </button>
@@ -97,7 +109,7 @@ const PatientDashboard = () => {
               <h2 className="text-3xl font-bold mb-2">Welcome back, {userData.name}!</h2>
             </div>
             <button
-              onClick={() => setShowBookingModal(true)}
+              onClick={() => navigate("/AllDoctorsPage")}
               className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 hover:bg-blue-50 transition"
             >
               <Plus className="w-5 h-5" />
@@ -240,7 +252,7 @@ const PatientDashboard = () => {
             <div className="p-6 border-b flex justify-between items-center">
               <h3 className="text-lg font-bold text-gray-900">All Appointments</h3>
               <button
-                onClick={() => setShowBookingModal(true)}
+                onClick={() => navigate("/AllDoctorsPage")}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition flex items-center space-x-2"
               >
                 <Plus className="w-4 h-4" />

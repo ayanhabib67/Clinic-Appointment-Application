@@ -29,7 +29,9 @@ const StaffDashboard = () => {
   const [qualification, setQualification] = useState("");
   const [doctorId, setDoctorId] = useState("");
 
-  
+  const [appointmentsData, setAppointmentsData] = useState([]); // ✅ fixed
+  const [loading, setLoading] = useState(true);
+
   const stats = [
     {
       label: "Today's Appointments",
@@ -57,51 +59,28 @@ const StaffDashboard = () => {
     },
   ];
 
-  const appointmentsData = [
-    {
-      patient: "Ahmed Khan",
-      doctor: "Dr. Sarah Ali",
-      specialty: "General Physician",
-      time: "10:00 AM",
-      room: "Room 1",
-      status: "Booked",
-    },
-    {
-      patient: "Fatima Noor",
-      doctor: "Dr. Hassan Ahmed",
-      specialty: "Orthopedic",
-      time: "10:30 AM",
-      room: "Room 2",
-      status: "Checked-In",
-    },
-    {
-      patient: "Ali Raza",
-      doctor: "Dr. Sarah Ali",
-      specialty: "General Physician",
-      time: "11:00 AM",
-      room: "Room 1",
-      status: "Booked",
-    },
-    {
-      patient: "Ayesha Malik",
-      doctor: "Dr. Zainab Hussain",
-      specialty: "ENT",
-      time: "11:30 AM",
-      room: "Room 3",
-      status: "Completed",
-    },
-    {
-      patient: "Bilal Ahmed",
-      doctor: "Dr. Omar Farooq",
-      specialty: "Dentist",
-      time: "12:00 PM",
-      room: "Room 4",
-      status: "Booked",
-    },
-  ];
+  const getAppointment = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        "http://localhost:5000/api/getAllAppointments"
+      );
+      console.log("Appointments fetched:", response);
+      setAppointmentsData(response.data.data || []);
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+      setAppointmentsData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getAppointment();
+  }, []);
 
   const getStatusColor = (status) => {
-    switch (status.toLowerCase()) {
+    switch (status?.toLowerCase()) {
       case "booked":
         return "bg-blue-100 text-blue-800";
       case "checked-in":
@@ -157,7 +136,7 @@ const StaffDashboard = () => {
       );
       console.log("Doctor added successfully:", response.data);
 
-     
+      // Reset form
       setName("");
       setEmail("");
       setPassword("");
@@ -180,7 +159,6 @@ const StaffDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-     
       <div className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div>
@@ -205,16 +183,17 @@ const StaffDashboard = () => {
         </div>
       </div>
 
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-
+        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {stats.map((stat, index) => (
             <div key={index} className="bg-white rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-3xl font-bold text-gray-900">
+                    {stat.value}
+                  </p>
                 </div>
                 <div className={`${stat.color} p-3 rounded-lg`}>
                   <stat.icon className="w-6 h-6 text-white" />
@@ -224,7 +203,7 @@ const StaffDashboard = () => {
           ))}
         </div>
 
-       
+        {/* Tabs */}
         <div className="bg-white rounded-lg shadow mb-6">
           <div className="border-b border-gray-200">
             <nav className="flex">
@@ -251,7 +230,7 @@ const StaffDashboard = () => {
           </div>
 
           <div className="p-6">
-          
+            {/* ✅ Appointments Overview */}
             {activeTab === "overview" && (
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -262,77 +241,95 @@ const StaffDashboard = () => {
                     + New Appointment
                   </button>
                 </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        {[
-                          "Time",
-                          "Patient",
-                          "Doctor",
-                          "Specialty",
-                          "Room",
-                          "Status",
-                          "Actions",
-                        ].map((header) => (
-                          <th
-                            key={header}
-                            className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"
-                          >
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                      {appointmentsData.map((apt, index) => (
-                        <tr key={index} className="hover:bg-gray-50">
-                          <td className="px-4 py-3 text-sm text-gray-900">
-                            {apt.time}
-                          </td>
-                          <td className="px-4 py-3 text-sm font-medium text-gray-900">
-                            {apt.patient}
-                          </td>
-                          <td className="px-4 py-3 text-sm text-gray-900">
-                            {apt.doctor}
-                          </td>
-                          <td className="px-4 py-3 text-sm text-gray-600">
-                            {apt.specialty}
-                          </td>
-                          <td className="px-4 py-3 text-sm text-gray-900">
-                            {apt.room}
-                          </td>
-                          <td className="px-4 py-3">
-                            <span
-                              className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
-                                apt.status
-                              )}`}
+
+                {loading ? (
+                  <div className="text-center text-gray-500 py-10">
+                    Loading appointments...
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          {[
+                            "Time",
+                            "Patient",
+                            "Doctor",
+                            "Specialty",
+                            "Room",
+                            "Status",
+                            "Actions",
+                          ].map((header) => (
+                            <th
+                              key={header}
+                              className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"
                             >
-                              {apt.status}
-                            </span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <div className="flex gap-2">
-                              <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
-                                <Eye className="w-4 h-4" />
-                              </button>
-                              <button className="p-1 text-green-600 hover:bg-green-50 rounded">
-                                <CheckCircle className="w-4 h-4" />
-                              </button>
-                              <button className="p-1 text-red-600 hover:bg-red-50 rounded">
-                                <XCircle className="w-4 h-4" />
-                              </button>
-                            </div>
-                          </td>
+                              {header}
+                            </th>
+                          ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200">
+                        {appointmentsData.length > 0 ? (
+                          appointmentsData.map((apt, index) => (
+                            <tr key={index} className="hover:bg-gray-50">
+                              <td className="px-4 py-3 text-sm text-gray-900">
+                                {apt.timeSlot}
+                              </td>
+                              <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                {apt.patientName}
+                              </td>
+                              <td className="px-4 py-3 text-sm text-gray-900">
+                                {apt.doctorName}
+                              </td>
+                              <td className="px-4 py-3 text-sm text-gray-600">
+                                {apt.specialization}
+                              </td>
+                              <td className="px-4 py-3 text-sm text-gray-900">
+                                {apt.room}
+                              </td>
+                              <td className="px-4 py-3">
+                                <span
+                                  className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
+                                    apt.status
+                                  )}`}
+                                >
+                                  {apt.status}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3">
+                                <div className="flex gap-2">
+                                  <button className="p-1 text-blue-600 hover:bg-blue-50 rounded">
+                                    <Eye className="w-4 h-4" />
+                                  </button>
+                                  <button className="p-1 text-green-600 hover:bg-green-50 rounded">
+                                    <CheckCircle className="w-4 h-4" />
+                                  </button>
+                                  <button className="p-1 text-red-600 hover:bg-red-50 rounded">
+                                    <XCircle className="w-4 h-4" />
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td
+                              colSpan="7"
+                              className="text-center text-gray-500 py-6"
+                            >
+                              No appointments found.
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             )}
 
-          
+            {/* ✅ Doctors Section */}
             {activeTab === "doctors" && (
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -369,14 +366,14 @@ const StaffDashboard = () => {
                               {doctor.patients || 0} patients today
                             </p>
                             <p className="text-xs text-gray-500">
-                              Room Number :{doctor.roomNumber || "N/A"}
+                              Room Number: {doctor.roomNumber || "N/A"}
                             </p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 text-sm text-gray-700 bg-gray-50 px-3 py-2 rounded">
                           <Calendar className="w-4 h-4 text-gray-500" />
                           <span>
-                            {doctor.timeslots && doctor.timeslots.length > 0
+                            {doctor.timeslots?.length > 0
                               ? doctor.timeslots.join(", ")
                               : "No schedule provided"}
                           </span>
@@ -388,7 +385,7 @@ const StaffDashboard = () => {
               </div>
             )}
 
-       
+            {/* ✅ Add Doctor Section */}
             {activeTab === "addDoctor" && (
               <div>
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
